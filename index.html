@@ -57,62 +57,49 @@
         }
 
         .yes-btn { background-color: #ff4d6d; color: white; }
-        .yes-btn:hover { transform: scale(1.1); background-color: #ff758f; }
-
-        .no-btn { 
-            background-color: #e0e0e0; 
-            color: #777; 
-            position: absolute; /* Needed for the jumping effect */
-        }
+        .no-btn { background-color: #e0e0e0; color: #777; transition: 0.1s; }
 
         .hidden { display: none; }
-
         #letter { animation: heartBeat 1.5s infinite alternate; }
-
-        @keyframes heartBeat {
-            from { transform: scale(1); }
-            to { transform: scale(1.03); }
-        }
+        @keyframes heartBeat { from { transform: scale(1); } to { transform: scale(1.03); } }
     </style>
 </head>
 <body>
 
-    <audio id="loveSong" loop>
-        <source src="https://www.myinstants.com/media/sounds/elvis-presley-cant-help-falling-in-love-audio.mp3" type="audio/mpeg">
-    </audio>
+    <div id="music-container"></div>
 
     <div id="step1" class="container">
-        <img src="https://media.tenor.com/kn_67u7vT8AAAAAi/bubu-dudu-bubu.gif" alt="Bubu waving">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHIwd3R2Z3R4bmR4bmR4bmR4bmR4bmR4bmR4bmR4bmR4bmR4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/T8698S7627xInC61J8/giphy.gif" alt="Bubu waving">
         <h1>Question #1</h1>
         <p>Are you the most handsome boy in the world, <b>Bom</b>?</p>
         <div class="btn-container">
             <button class="yes-btn" onclick="nextStep(1, 2)">Duh, Yes!</button>
-            <button class="no-btn" onmouseover="dodge(this)">No 😤</button>
+            <button class="no-btn" onmouseover="dodge(this)" onclick="dodge(this)">No 😤</button>
         </div>
     </div>
 
     <div id="step2" class="container hidden">
-        <img src="https://media.tenor.com/866uM4X0v6cAAAAi/bubu-dudu-sseeyall.gif" alt="Bubu Dudu love">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHIwd3R2Z3R4bmR4bmR4bmR4bmR4bmR4bmR4bmR4bmR4bmR4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/L4lvpDImYfHk54FPhN/giphy.gif" alt="Bubu Dudu love">
         <h1>Question #2</h1>
         <p>Do you promise to always share your snacks with me, <b>Boba</b>?</p>
         <div class="btn-container">
             <button class="yes-btn" onclick="nextStep(2, 3)">I Promise!</button>
-            <button class="no-btn" onmouseover="dodge(this)">Never! 🙄</button>
+            <button class="no-btn" onmouseover="dodge(this)" onclick="dodge(this)">Never! 🙄</button>
         </div>
     </div>
 
     <div id="step3" class="container hidden">
-        <img src="https://media.tenor.com/9mO397Xm-9AAAAAi/dudu-bubu.gif" alt="Bubu Dudu waiting">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHIwd3R2Z3R4bmR4bmR4bmR4bmR4bmR4bmR4bmR4bmR4bmR4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/M90mJvWtgpW1FvS2m9/giphy.gif" alt="Bubu Dudu waiting">
         <h1>Question #3</h1>
         <p>Do you know how lucky I feel to have you, <b>Maakdu</b>?</p>
         <div class="btn-container">
             <button class="yes-btn" onclick="playMusicAndFinish()">I know now! ❤️</button>
-            <button class="no-btn" onmouseover="dodge(this)">Not really..</button>
+            <button class="no-btn" onmouseover="dodge(this)" onclick="dodge(this)">Not really..</button>
         </div>
     </div>
 
     <div id="letter" class="container hidden">
-        <img src="https://media.tenor.com/scS6X_fL37EAAAAi/bubu-dudu-panda-bear.gif" alt="Bubu Dudu Hug">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHIwd3R2Z3R4bmR4bmR4bmR4bmR4bmR4bmR4bmR4bmR4bmR4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/KztT2c4u8mYYUiMKdJ/giphy.gif" alt="Bubu Dudu Hug">
         <h1>You're the Best! ❤️</h1>
         <p>
             Yay! You passed the test! <br><br>
@@ -134,22 +121,11 @@
             document.getElementById('letter').classList.remove('hidden');
             document.body.style.backgroundColor = "#ffdeeb";
 
-            // Play the Elvis song
-            const audio = document.getElementById('loveSong');
-            audio.play();
+            // Hidden YouTube player starts playing Elvis Presley
+            const musicContainer = document.getElementById('music-container');
+            musicContainer.innerHTML = '<iframe width="0" height="0" src="https://www.youtube.com/embed/vGJTaP6anOU?autoplay=1" frameborder="0" allow="autoplay"></iframe>';
         }
 
         function dodge(btn) {
-            const container = document.querySelector('.container');
-            const rect = container.getBoundingClientRect();
-            
-            // Generate random positions away from the center container
             const x = Math.random() * (window.innerWidth - btn.clientWidth);
             const y = Math.random() * (window.innerHeight - btn.clientHeight);
-            
-            btn.style.left = x + 'px';
-            btn.style.top = y + 'px';
-        }
-    </script>
-</body>
-</html>
