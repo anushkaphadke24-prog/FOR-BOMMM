@@ -6,7 +6,7 @@
     <title>For My Favorite Person ❤️</title>
     <style>
         body {
-            font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
+            font-family: 'Comic Sans MS', cursive;
             background-color: #fdf0f0;
             display: flex;
             justify-content: center;
@@ -14,118 +14,115 @@
             height: 100vh;
             margin: 0;
             overflow: hidden;
-            transition: background-color 1s ease;
         }
 
         .container {
             background: white;
             padding: 2rem;
             border-radius: 30px;
-            box-shadow: 0 15px 35px rgba(255, 182, 193, 0.4);
-            max-width: 400px;
+            box-shadow: 0 10px 25px rgba(255, 182, 193, 0.5);
+            max-width: 350px;
             width: 85%;
             text-align: center;
             position: relative;
         }
 
-        img {
-            width: 160px;
-            height: auto;
-            margin-bottom: 15px;
-            border-radius: 15px;
+        /* Fixed Image size */
+        .bubu-img {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            margin-bottom: 10px;
         }
 
-        h1 { color: #ff4d6d; font-size: 1.4rem; margin: 10px 0; }
-        p { color: #594e4e; font-size: 1.1rem; line-height: 1.5; }
+        h1 { color: #ff4d6d; font-size: 1.3rem; }
+        p { color: #594e4e; }
 
         .btn-container {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-top: 25px;
-            min-height: 50px;
+            gap: 10px;
+            margin-top: 20px;
         }
 
         button {
-            padding: 12px 25px;
-            font-size: 1rem;
+            padding: 10px 20px;
             border: none;
-            border-radius: 25px;
+            border-radius: 20px;
             cursor: pointer;
             font-weight: bold;
-            transition: 0.2s;
         }
 
         .yes-btn { background-color: #ff4d6d; color: white; }
-        .no-btn { background-color: #e0e0e0; color: #777; transition: 0.1s; }
+        .no-btn { background-color: #eee; color: #777; position: absolute; }
 
         .hidden { display: none; }
-        #letter { animation: heartBeat 1.5s infinite alternate; }
-        @keyframes heartBeat { from { transform: scale(1); } to { transform: scale(1.03); } }
     </style>
 </head>
 <body>
 
-    <div id="music-container"></div>
+    <audio id="myAudio" loop>
+      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+      </audio>
 
     <div id="step1" class="container">
-        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHIwd3R2Z3R4bmR4bmR4bmR4bmR4bmR4bmR4bmR4bmR4bmR4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/T8698S7627xInC61J8/giphy.gif" alt="Bubu waving">
+        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHIwd3R2Z3R4bmR4bmR4bmR4bmR4bmR4bmR4bmR4bmR4bmR4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/T8698S7627xInC61J8/giphy.gif" class="bubu-img">
         <h1>Question #1</h1>
-        <p>Are you the most handsome boy in the world, <b>Bom</b>?</p>
+        <p>Are you the most handsome boy, <b>Bom</b>?</p>
         <div class="btn-container">
-            <button class="yes-btn" onclick="nextStep(1, 2)">Duh, Yes!</button>
-            <button class="no-btn" onmouseover="dodge(this)" onclick="dodge(this)">No 😤</button>
+            <button class="yes-btn" onclick="nextStep(1, 2)">Yes!</button>
+            <button class="no-btn" id="no1" onmouseover="dodge('no1')">No</button>
         </div>
     </div>
 
     <div id="step2" class="container hidden">
-        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHIwd3R2Z3R4bmR4bmR4bmR4bmR4bmR4bmR4bmR4bmR4bmR4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/L4lvpDImYfHk54FPhN/giphy.gif" alt="Bubu Dudu love">
+        <img src="https://media.giphy.com/media/L4lvpDImYfHk54FPhN/giphy.gif" class="bubu-img">
         <h1>Question #2</h1>
-        <p>Do you promise to always share your snacks with me, <b>Boba</b>?</p>
+        <p>Will you give me snacks, <b>Boba</b>?</p>
         <div class="btn-container">
-            <button class="yes-btn" onclick="nextStep(2, 3)">I Promise!</button>
-            <button class="no-btn" onmouseover="dodge(this)" onclick="dodge(this)">Never! 🙄</button>
+            <button class="yes-btn" onclick="nextStep(2, 3)">Always!</button>
+            <button class="no-btn" id="no2" onmouseover="dodge('no2')">No</button>
         </div>
     </div>
 
     <div id="step3" class="container hidden">
-        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHIwd3R2Z3R4bmR4bmR4bmR4bmR4bmR4bmR4bmR4bmR4bmR4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/M90mJvWtgpW1FvS2m9/giphy.gif" alt="Bubu Dudu waiting">
+        <img src="https://media.giphy.com/media/M90mJvWtgpW1FvS2m9/giphy.gif" class="bubu-img">
         <h1>Question #3</h1>
-        <p>Do you know how lucky I feel to have you, <b>Maakdu</b>?</p>
+        <p>Do you love me, <b>Maakdu</b>?</p>
         <div class="btn-container">
-            <button class="yes-btn" onclick="playMusicAndFinish()">I know now! ❤️</button>
-            <button class="no-btn" onmouseover="dodge(this)" onclick="dodge(this)">Not really..</button>
+            <button class="yes-btn" onclick="finish()">Yes!</button>
+            <button class="no-btn" id="no3" onmouseover="dodge('no3')">No</button>
         </div>
     </div>
 
     <div id="letter" class="container hidden">
-        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHIwd3R2Z3R4bmR4bmR4bmR4bmR4bmR4bmR4bmR4bmR4bmR4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/KztT2c4u8mYYUiMKdJ/giphy.gif" alt="Bubu Dudu Hug">
-        <h1>You're the Best! ❤️</h1>
-        <p>
-            Yay! You passed the test! <br><br>
-            Whether you are <b>Bom, Boba, or Maakdu</b>, you are the absolute best boyfriend in the world. 
-            I am so lucky to have you by my side.
-            <br><br>
-            I love you more than words can say! ✨
-        </p>
+        <img src="https://media.giphy.com/media/KztT2c4u8mYYUiMKdJ/giphy.gif" class="bubu-img">
+        <h1>I Love You!</h1>
+        <p>You're the best boyfriend ever. I'm so lucky to have you! ❤️</p>
+        <div id="musicBox"></div>
     </div>
 
     <script>
-        function nextStep(current, next) {
-            document.getElementById('step' + current).classList.add('hidden');
+        function nextStep(curr, next) {
+            document.getElementById('step' + curr).classList.add('hidden');
             document.getElementById('step' + next).classList.remove('hidden');
         }
 
-        function playMusicAndFinish() {
-            document.getElementById('step3').classList.add('hidden');
-            document.getElementById('letter').classList.remove('hidden');
-            document.body.style.backgroundColor = "#ffdeeb";
-
-            // Hidden YouTube player starts playing Elvis Presley
-            const musicContainer = document.getElementById('music-container');
-            musicContainer.innerHTML = '<iframe width="0" height="0" src="https://www.youtube.com/embed/vGJTaP6anOU?autoplay=1" frameborder="0" allow="autoplay"></iframe>';
+        function dodge(id) {
+            const btn = document.getElementById(id);
+            btn.style.left = Math.random() * 80 + '%';
+            btn.style.top = Math.random() * 80 + '%';
         }
 
-        function dodge(btn) {
-            const x = Math.random() * (window.innerWidth - btn.clientWidth);
-            const y = Math.random() * (window.innerHeight - btn.clientHeight);
+        function finish() {
+            document.getElementById('step3').classList.add('hidden');
+            document.getElementById('letter').classList.remove('hidden');
+            document.body.style.backgroundColor = "#ffc1d6";
+            
+            // This is the most reliable way to play the specific song
+            document.getElementById('musicBox').innerHTML = 
+                '<iframe width="0" height="0" src="https://www.youtube.com/embed/vGJTaP6anOU?autoplay=1" frameborder="0" allow="autoplay"></iframe>';
+        }
+    </script>
+</body>
+</html>
